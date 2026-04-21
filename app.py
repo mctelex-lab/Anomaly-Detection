@@ -15,6 +15,8 @@ import json
 import time
 import os
 from datetime import datetime
+import torch
+import torch.nn as nn
 
 # =============================================================================
 # DEPENDENCY CHECK & GRACEFUL FALLBACK
