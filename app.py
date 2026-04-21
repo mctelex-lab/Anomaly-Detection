@@ -17,6 +17,18 @@ import os
 from datetime import datetime
 
 # =============================================================================
+# DEPENDENCY CHECK & GRACEFUL FALLBACK
+# =============================================================================
+try:
+    import torch
+    import torch.nn as nn
+    TORCH_AVAILABLE = True
+except ImportError:
+    TORCH_AVAILABLE = False
+    st.error("⚠️ PyTorch not available. Running in demonstration mode.")
+    st.info("For full functionality, ensure 'torch' is in requirements.txt")
+
+# =============================================================================
 # PAGE CONFIGURATION & THEME
 # =============================================================================
 st.set_page_config(
