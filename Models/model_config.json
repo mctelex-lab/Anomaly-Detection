@@ -1,0 +1,62 @@
+{
+  "model_type": "proposed_relational_focal_fastattr",
+  "tabular_dim": 16,
+  "relational_dim": 64,
+  "latency_target_ms": 300,
+  "optimal_thresholds": {
+    "darknet2020": 0.8698230385780334,
+    "cic_ids2018": 0.5627354383468628,
+    "default": 0.8698230385780334
+  },
+  "metrics_proposed": {
+    "Accuracy": 0.9999411817428129,
+    "Precision": 0.9999460308087572,
+    "Recall": 0.9998969758946169,
+    "F1-Score": 0.9999215027280912,
+    "AUC-ROC": NaN,
+    "AUC-PR": 0.9999874265522198,
+    "Latency_ms": 0.00023129205953492917,
+    "Latency_p95": 0.00024780764133294124,
+    "Optimal_Threshold": 0.7162792384624481,
+    "Anomaly_Rate_Predicted": 0.6816296871234615
+  },
+  "metrics_benchmark": {
+    "Accuracy": 0.8810442761433148,
+    "Precision": 0.8810316296978424,
+    "Recall": 0.8810316296978424,
+    "F1-Score": 0.8810316296978424,
+    "AUC-ROC": NaN,
+    "AUC-PR": 0.9999878333139615,
+    "Latency_ms": 0.0025792728259649315,
+    "Latency_p95": 0.0025956749120538145,
+    "Optimal_Threshold": 0.6263356059789658,
+    "Anomaly_Rate_Predicted": 0.18165099992688502
+  },
+  "training_epochs": 50,
+  "focal_loss_alpha": 0.75,
+  "focal_loss_gamma": 2.0,
+  "device_used": "cuda",
+  "feature_names": [
+    "flow_duration",
+    "flow_iat_mean",
+    "flow_iat_std",
+    "flow_iat_max",
+    "flow_iat_min",
+    "fwd_psh_flags",
+    "bwd_psh_flags",
+    "fwd_urg_flags",
+    "bwd_urg_flags",
+    "fin_flag_count",
+    "syn_flag_count",
+    "rst_flag_count",
+    "psh_flag_count",
+    "ack_flag_count",
+    "urg_flag_count",
+    "down_up_ratio"
+  ],
+  "anomaly_ratios": {
+    "darknet2020": 1.0,
+    "cic_ids2018": 0.3633016236320721
+  },
+  "benchmark_model_type": "dummy"
+}

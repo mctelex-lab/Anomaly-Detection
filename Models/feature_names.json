@@ -1,0 +1,1 @@
+["flow_duration", "flow_iat_mean", "flow_iat_std", "flow_iat_max", "flow_iat_min", "fwd_psh_flags", "bwd_psh_flags", "fwd_urg_flags", "bwd_urg_flags", "fin_flag_count", "syn_flag_count", "rst_flag_count", "psh_flag_count", "ack_flag_count", "urg_flag_count", "down_up_ratio"]

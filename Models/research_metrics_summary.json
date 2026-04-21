@@ -1,0 +1,86 @@
+{
+  "proposed_per_dataset": {
+    "darknet2020": {
+      "Accuracy": 0.9999764478673544,
+      "Precision": 1.0,
+      "Recall": 0.9999764478673544,
+      "F1-Score": 0.9999882237949999,
+      "AUC-ROC": NaN,
+      "AUC-PR": 1.0,
+      "Latency_ms": 0.0002450902800329682,
+      "Latency_p95": 0.00024773966415089343,
+      "Optimal_Threshold": 0.8698230385780334,
+      "Anomaly_Rate_Predicted": 0.9999764478673544
+    },
+    "cic_ids2018": {
+      "Accuracy": 0.9999364217526615,
+      "Precision": 0.999938746401351,
+      "Recall": 0.999886249289058,
+      "F1-Score": 0.9999124971561576,
+      "AUC-ROC": 0.9999944768032086,
+      "AUC-PR": 0.999985729470718,
+      "Latency_ms": 0.00022942966624584768,
+      "Latency_p95": 0.0002478168164470565,
+      "Optimal_Threshold": 0.5627354383468628,
+      "Anomaly_Rate_Predicted": 0.3632829263795685
+    }
+  },
+  "benchmark_per_dataset": {
+    "darknet2020": {
+      "Accuracy": 0.0,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1-Score": 0.0,
+      "AUC-ROC": NaN,
+      "AUC-PR": 1.0,
+      "Latency_ms": 4.861772506185539e-07,
+      "Latency_p95": 6.177724393679688e-07,
+      "Optimal_Threshold": 1.0,
+      "Anomaly_Rate_Predicted": 0.0
+    },
+    "cic_ids2018": {
+      "Accuracy": 0.9999618530515969,
+      "Precision": 0.9999474996718729,
+      "Recall": 0.9999474996718729,
+      "F1-Score": 0.9999474996718729,
+      "AUC-ROC": 0.9999959055547492,
+      "AUC-PR": 0.9999861911344912,
+      "Latency_ms": 0.002927340531450657,
+      "Latency_p95": 0.002945938701669865,
+      "Optimal_Threshold": 0.2526712119579315,
+      "Anomaly_Rate_Predicted": 0.36330199985377004
+    }
+  },
+  "aggregated": {
+    "proposed": {
+      "Accuracy": 0.9999411817428129,
+      "Precision": 0.9999460308087572,
+      "Recall": 0.9998969758946169,
+      "F1-Score": 0.9999215027280912,
+      "AUC-ROC": NaN,
+      "AUC-PR": 0.9999874265522198,
+      "Latency_ms": 0.00023129205953492917,
+      "Latency_p95": 0.00024780764133294124,
+      "Optimal_Threshold": 0.7162792384624481,
+      "Anomaly_Rate_Predicted": 0.6816296871234615
+    },
+    "benchmark": {
+      "Accuracy": 0.8810442761433148,
+      "Precision": 0.8810316296978424,
+      "Recall": 0.8810316296978424,
+      "F1-Score": 0.8810316296978424,
+      "AUC-ROC": NaN,
+      "AUC-PR": 0.9999878333139615,
+      "Latency_ms": 0.0025792728259649315,
+      "Latency_p95": 0.0025956749120538145,
+      "Optimal_Threshold": 0.6263356059789658,
+      "Anomaly_Rate_Predicted": 0.18165099992688502
+    }
+  },
+  "objective_achievements": {
+    "objective_i_latency": "PASSED",
+    "objective_ii_recall_improvement": "+13.49%",
+    "objective_ii_f1_improvement": "+13.49%",
+    "objective_iii_throughput": "4323538 flows/sec"
+  }
+}
