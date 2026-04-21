@@ -8,7 +8,6 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import joblib
 import json
 import time
 import os
@@ -25,6 +24,13 @@ except ImportError:
     TORCH_AVAILABLE = False
     st.warning("⚠️ PyTorch not available. Running in demonstration mode with simulated predictions.")
     st.info("📦 To enable full functionality, ensure PyTorch is installed: `pip install torch`")
+
+try:
+    import joblib
+    JOBLIB_AVAILABLE = True
+except ImportError:
+    JOBLIB_AVAILABLE = False
+    st.warning("⚠️ Joblib not available. Using fallback mode.")
 
 # =============================================================================
 # PAGE CONFIGURATION & THEME
@@ -59,7 +65,6 @@ st.markdown("""
         display: flex; align-items: center; gap: 20px; padding: 15px 0; 
         border-bottom: 2px solid #1E40AF; margin-bottom: 25px;
     }
-    .logo-img { width: 70px; height: 70px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,229,255,0.2); }
     .brand-text h1 { margin: 0; font-size: 1.8rem; }
     .brand-text p { margin: 2px 0 0; color: #93C5FD !important; font-size: 0.95rem; }
     .credentials { 
@@ -176,7 +181,7 @@ if TORCH_AVAILABLE:
 # =============================================================================
 @st.cache_resource
 def load_artifacts():
-    if not TORCH_AVAILABLE:
+    if not TORCH_AVAILABLE or not JOBLIB_AVAILABLE:
         return None, None, None, None, {"latency_target_met": False, "tabular_dim": 42, "relational_dim": 64}
     
     base_dir = "deployment_artifacts" if os.path.exists("deployment_artifacts") else "."
@@ -229,8 +234,7 @@ def run_inference(model, X_tensor, threshold):
 # =============================================================================
 def main():
     # Header with Logo & Credentials
-    logo_url = "https://raw.githubusercontent.com/streamlit/streamlit/master/lib/streamlit/static/favicon.png"  # Placeholder logo
-    st.markdown(f"""
+    st.markdown("""
     <div class="header-container fade-in">
         <div class="brand-text">
             <h1>🛡️ Encrypted Traffic Anomaly Detector</h1>
@@ -275,6 +279,8 @@ def main():
         
         if not TORCH_AVAILABLE:
             st.info("ℹ️ Running in demo mode. Install PyTorch for full functionality.")
+        if not JOBLIB_AVAILABLE:
+            st.info("ℹ️ Joblib not available. Using fallback mode.")
 
     # Main Dashboard
     if uploaded_file is not None:
@@ -341,7 +347,7 @@ def main():
                     st.markdown("### 🔎 Flow-Level Predictions")
                     display_count = min(15, len(preds))
                     results_df = pd.DataFrame({
-                        "Flow ID": range(display_count),
+                        "Flow ID": range(1, display_count + 1),
                         "Status": ["🔴 Anomaly" if p else "🟢 Benign" for p in preds[:display_count]],
                         "Confidence": [f"{p*100:.1f}%" for p in probs[:display_count]],
                         "Risk Tier": ["Critical" if p > 0.85 else "Medium" if p > 0.5 else "Low" for p in probs[:display_count]]
@@ -411,6 +417,7 @@ def main():
                         param_count = 0
                     
                     st.code(f"PyTorch Available: {TORCH_AVAILABLE}\n"
+                            f"Joblib Available: {JOBLIB_AVAILABLE}\n"
                             f"Device: {device_info}\n"
                             f"Model Params: {param_count:,}\n"
                             f"Feature Dim: {config.get('tabular_dim', 'N/A') if config else 'N/A'}\n"

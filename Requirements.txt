@@ -5,15 +5,17 @@
 # Core Framework
 streamlit>=1.32.0
 
-# Machine Learning & Deep Learning (CPU-optimized for Cloud)
+# Machine Learning & Deep Learning
 torch>=2.0.0
+torchvision>=0.15.0
 
 # Data Processing
 pandas>=2.0.0
 numpy>=1.24.0
 joblib>=1.2.0
+scikit-learn>=1.3.0
 
-# Visualization (optional, for enhanced charts)
+# Visualization
 plotly>=5.19.0
 
 # Utilities
